@@ -1,0 +1,108 @@
+* { box-sizing: border-box; }
+
+$anti-flash-white: #F5F5F1;
+$light-gray: #ECECEC;
+$apple: #78C042;
+
+$background-color: $anti-flash-white;
+
+$listing-title-color: black;
+$listing-seller-color: gray;
+$listing-price-color: $apple;
+
+body {
+	background-color: $background-color;
+	font-family: 'Helvetica', sans-serif;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.sidebar {
+	display: inline-block;
+	width: 22%;
+	& .sidebar-heading {
+		h4 {
+			margin-top: 0;
+		 }
+	}
+}
+
+
+.listings {
+	display: inline-block;
+	width: 72%;
+	min-width: 950px;
+	& .listings-heading {
+		h4 {
+			display:inline-block;
+		}
+	}
+}
+
+.listings-heading-text {
+	display: inline-block;
+	width: 48%;
+}
+
+.listings-heading-sorter {
+	display: inline-block;
+	width: 48%;
+	text-align: right;
+}
+
+.listing {
+	display: inline-block;
+	position: relative;
+	border: 1px solid $light-gray;
+	border-radius: 2px;
+	width: 30%;
+	min-width: 270px;
+	height: 250px;
+	margin: 10px 12px;
+	background-color: white;
+	.listing-pic {
+		overflow: hidden;
+		display: inline-block;
+		width: 98%;
+		min-width: 98%;
+		height: 200px;
+		line-height: 200px;
+		margin: 3px;
+		text-align: center;
+		img {
+			margin: 0 -100%;
+			width: 279px;
+			height: 200px;
+		}
+	}
+	.listing-title {
+		display: inline-block;
+		width: 98%;
+		margin: 0 auto;
+		a {
+			font-size: 14px;
+			color: $listing-title-color;
+		}
+	}
+	.listing-seller {
+		display: inline-block;
+		width: 48%;
+		a {
+			font-size: 12px;
+			color: $listing-seller-color;
+		}
+	}
+	.listing-price {
+		display: inline-block;
+		width: 48%;
+		text-align: right;
+		font-size: 12px;
+		color: $listing-price-color;
+	}
+	a {
+		text-decoration: none;
+	}
+}
