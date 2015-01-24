@@ -12,7 +12,17 @@
 			<h4>Show results for:</h4>
 		</div>
 		<div class="sidebar-content">
-
+			<h4>Item Type</h4>
+				<span class="radio" data-value="all" selected>All</span>
+				<span class="radio" data-value="Handmade">Handmade</span>
+				<span class="radio" data-value="Vintage">Vintage</span>
+				<span class="radio" data-value="Supplies">Supplies</span>
+			<hr>
+			<div class="sidebar-categories">
+				<h4>Categories</h4>
+				<!-- AUTO POPULATED -->
+			</div>
+			<hr>
 		</div>
 	</div>
 
@@ -25,22 +35,18 @@
 			<div class="listings-heading-sorter">
 				<span class="sorter">
 					Sort by:
-						<select>
-							<option>Highest Price</option>
-							<option>Lowest Price</option>
-							<option>Newest</option>
-							<option>Relevancy</option>
-						</select>
+						<span class="current-sort">Most Recent</span>
+						<div class="sort-panel">
+							<span class="sort" data-value="created" selected>Most Recent</span>
+							<span class="sort" data-value="price-high">Highest Price</span>
+							<span class="sort" data-value="price-low">Lowest Price</span>
+							<span class="sort" data-value="score">Relevance</span>
+						</div>
 				</span>
 			</div>
 		</div>
 		<div class="listings-content">
-			<!-- <div class="listing">
-				<div class="listing-pic"><img src="http://placekitten.com/g/300/300"></div>
-				<div class="listing-title"><a href="#">This is an awesome listing title</a></div>
-				<div class="listing-seller"><a href="#">Seller</a></div>
-				<div class="listing-price"><span>\.00 USD</span></div>
-			</div> -->
+			<!-- AUTO POPULATED -->
 		</div>
 	</div>
 </div>
