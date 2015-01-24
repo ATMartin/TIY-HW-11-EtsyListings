@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Etsy Listing</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">	
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -53,7 +54,17 @@
 	<!-- TEMPLATES -->
 	<script type="text/template" data-template-name="listing-template">
 		<div class="listing">
-			<div class="listing-pic"><% img %></div>
+			<div class="listing-pic">
+				<% img %>
+				<div class="favorite-this">
+				 <i class="fa fa-heart"></i>
+				</div>
+				<div class="add-to-list">
+					<i class="fa fa-align-justify"></i>
+					<i class="fa fa-caret-down"></i>
+				</div>
+			</div>
+
 			<div class="listing-title"><% title %></div>
 			<div class="listing-seller"><% seller %></div>
 			<div class="listing-price"><% price %></div>

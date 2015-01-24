@@ -169,10 +169,40 @@ body {
 		line-height: 200px;
 		margin: 3px;
 		text-align: center;
+		position: relative;
 		img {
 			margin: 0 -100%;
 			width: 279px;
 			height: 200px;
+	  }
+		.favorite-this,
+		.add-to-list {
+			position: absolute;
+			top: 5px;
+			height: 30px;
+			background-color: white;
+			border-radius: 2px;
+			border: 1px solid $light-gray;
+			line-height: 30px;
+			color: #ccc;
+			opacity: 0;
+			transition: all ease 0.2s;
+			&:hover {
+				border-color: gray;
+				text-shadow: 0 0 1px #aaa;
+			}
+		}
+		.favorite-this {
+			right: 50px;
+			width: 30px;
+		}
+		.add-to-list {
+			right: 5px;
+			width: 40px;
+		}
+		&:hover .favorite-this,
+		&:hover .add-to-list {
+			opacity: 1;
 		}
 	}
 	.listing-title {

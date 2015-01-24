@@ -70,7 +70,7 @@ var addToCategoryList = function(item) {
 $('.radio').on('click', function(e) {
 	$('.radio').removeAttr('selected');
 	$(this).attr('selected', true);
-	populatePage($(this).attr('data-value'));
+	populatePage($(this).attr('data-value'), etsyData);
 });
 
 $('.sorter').on('click', function(e) {

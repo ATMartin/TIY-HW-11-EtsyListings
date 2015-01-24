@@ -130,11 +130,36 @@ body {
     height: 200px;
     line-height: 200px;
     margin: 3px;
-    text-align: center; }
+    text-align: center;
+    position: relative; }
     .listing .listing-pic img {
       margin: 0 -100%;
       width: 279px;
       height: 200px; }
+    .listing .listing-pic .favorite-this,
+    .listing .listing-pic .add-to-list {
+      position: absolute;
+      top: 5px;
+      height: 30px;
+      background-color: white;
+      border-radius: 2px;
+      border: 1px solid #ECECEC;
+      line-height: 30px;
+      color: #ccc;
+      opacity: 0;
+      transition: all ease 0.2s; }
+      .listing .listing-pic .favorite-this:hover,
+      .listing .listing-pic .add-to-list:hover {
+        border-color: gray;
+        text-shadow: 0 0 1px #aaa; }
+    .listing .listing-pic .favorite-this {
+      right: 50px;
+      width: 30px; }
+    .listing .listing-pic .add-to-list {
+      right: 5px;
+      width: 40px; }
+    .listing .listing-pic:hover .favorite-this, .listing .listing-pic:hover .add-to-list {
+      opacity: 1; }
   .listing .listing-title {
     display: inline-block;
     width: 98%;
