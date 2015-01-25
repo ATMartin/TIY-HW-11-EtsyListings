@@ -18,23 +18,23 @@ $.ajax({
 
 $(document).ready(function() { loadData(urlRaw); });
 
-var replaceText = function(text, data) {
-
-};
+var categories = {
+		'Handmade': [],
+		'Vintage': [],
+		'Supplies': []
+	};
 
 var populatePage = function(marketSection, myData) {
 	var container = $(".listings-content");
 	var template = $("[data-template-name=listing-template]")[0].innerHTML;
-
+  
 	container.empty();
 	myData.forEach(function(item) {
-		if (marketSection != "all")
-		{
-			item.marketSections = determineMarketSections(item);
-			if (item.marketSections.indexOf(marketSection) == -1) {
-				return;
-			}
-		}
+		item.marketSections = determineMarketSections(item);
+		if (marketSection != "all" && item.marketSections.indexOf(marketSection) == 1) { return; };
+		
+		getCategories(item);
+
 		var shortTitle = (item.title.length > 30) ? (item.title.substr(0, 30) + '...') : item.title;
 		var shortSeller = (item.Shop.shop_name.length > 20) ? ( item.Shop.shop_name.substr(0, 20) + '...') : item.Shop.shop_name;
 
@@ -46,6 +46,8 @@ var populatePage = function(marketSection, myData) {
 			.replace("<% price %>", "$" + item.price + " " + item.currency_code);
 		container.append(listing);
 	});
+
+	renderCategories(categories);
 };
 
 var determineMarketSections = function(item) {
@@ -63,7 +65,33 @@ var determineMarketSections = function(item) {
 	return marketSections;
 };
 
-var addToCategoryList = function(item) {
+var getCategories = function(item) {
+	if (item.marketSections == []) { return; }
+	item.marketSections.forEach(function(section) {
+		item.category_path.forEach(function(category) {
+			if (categories[section].indexOf(category) == -1) { categories[section].push(category); }	
+		});	
+	});
+	console.log(categories);
+};
+
+var renderCategories = function(categories) {
+	var $rootEl = $('.sidebar-categories'),
+			rootUrl = 'http://www.etsy.com/search/',
+			myList = "";
+  
+	$rootEl.empty();	
+	Object.keys(categories).forEach(function(i) {
+		if (categories[i] == []) { return; }
+		myList += "<h4><a href='" + rootUrl + i + "?q=dragon'>" + i + "</a></h4><ul>";
+		categories[i].forEach(function(subcat) {
+			myList += "<li><a href='" + rootUrl + i + "/" + subcat + "?q=dragon'>" + subcat + "</a></li>";
+		});
+		myList += "</ul>"
+	});
+
+	$rootEl.append(myList);
+
 
 };
 
