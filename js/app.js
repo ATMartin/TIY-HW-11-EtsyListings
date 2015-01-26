@@ -1,8 +1,8 @@
 var etsyData;
-
-var urlRaw = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=dragon&includes=Images,Shop&limit=30';
-var urlScore = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=dragon&includes=Images,Shop&limit=30&sort_on=score';
-var urlPrice = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=dragon&includes=Images,Shop&limit=30&sort_on=price';
+var query = 'dragon';
+var urlRaw = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords='+ query +'&includes=Images,Shop&limit=30';
+var urlScore = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=' + query + '&includes=Images,Shop&limit=30&sort_on=score';
+var urlPrice = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=' + query + '&includes=Images,Shop&limit=30&sort_on=price';
 
 var loadData = function(urlSource) {
 $.ajax({
@@ -29,6 +29,11 @@ var populatePage = function(marketSection, myData) {
 	var template = $("[data-template-name=listing-template]")[0].innerHTML;
   
 	container.empty();
+  categories = {
+		'Handmade': [],
+		'Vintage': [],
+		'Supplies': []
+	};
 	myData.forEach(function(item) {
 		item.marketSections = determineMarketSections(item);
 		if (marketSection != "all" && item.marketSections.indexOf(marketSection) == 1) { return; };
@@ -72,7 +77,6 @@ var getCategories = function(item) {
 			if (categories[section].indexOf(category) == -1) { categories[section].push(category); }	
 		});	
 	});
-	console.log(categories);
 };
 
 var renderCategories = function(categories) {
@@ -83,7 +87,7 @@ var renderCategories = function(categories) {
 	$rootEl.empty();	
 	Object.keys(categories).forEach(function(i) {
 		if (categories[i] == []) { return; }
-		myList += "<h4><a href='" + rootUrl + i + "?q=dragon'>" + i + "</a></h4><ul>";
+		myList += "<h4><a href='" + rootUrl + i + "?q=" + query + "'>" + i + "</a></h4><ul>";
 		categories[i].forEach(function(subcat) {
 			myList += "<li><a href='" + rootUrl + i + "/" + subcat + "?q=dragon'>" + subcat + "</a></li>";
 		});
@@ -123,4 +127,13 @@ $('.sort').on('click', function(e) {
 			loadData(urlScore);
 			break;
 	};
+});
+
+$('.submitSearch').on('click', function(e) {
+	query = $('#search').val();
+	urlRaw = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords='+ query +'&includes=Images,Shop&limit=30';
+	urlScore = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=' + query + '&includes=Images,Shop&limit=30&sort_on=score';
+	urlPrice = 'https://openapi.etsy.com/v2/listings/active.js?api_key=k5wgyyr0g9x1yeqfd5pqu8lk&keywords=' + query + '&includes=Images,Shop&limit=30&sort_on=price';
+
+	loadData(urlRaw);
 });

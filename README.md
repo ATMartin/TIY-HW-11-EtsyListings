@@ -7,4 +7,6 @@ I'm following "hard mode" rules for my project, which means the finished page sh
 
 ### Project started on Jan 22nd @ ~3 PM.
 
-### Project completed on Jan 2th @ ~6 PM.
+### Project completed on Jan 24th @ ~6 PM.
+
+### Search Query completed on Jan 26th @ ~2:30 PM. 
